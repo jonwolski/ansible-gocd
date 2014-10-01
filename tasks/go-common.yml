@@ -44,11 +44,11 @@
 # Note: If the user or group exists, but under another ID, Ansible will try and change it.
 - name: add go group
   sudo: yes
-  group: gid={{ GOCD_GROUPID }} name={{ GOCD_GROUP }} state=present
+  group: name={{ GOCD_GROUP }} state=present
 
 - name: add go user with home at /var/go
   sudo: yes
-  user: name={{ GOCD_USER }} comment="Go CD User" uid={{ GOCD_USERID }} group={{ GOCD_GROUP }} home=/var/go
+  user: name={{ GOCD_USER }} comment="Go CD User" group={{ GOCD_GROUP }} home=/var/go
 
 - name: create log directory
   sudo: yes
