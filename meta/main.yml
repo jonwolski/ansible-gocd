@@ -1,7 +1,7 @@
 ---
 galaxy_info:
-  author: "Tim Brown"
-  description: "Install the Go Continuous Delivery tool.  Model even the most complex build and deploy workflow with ease."
+  author: "Jon Wolski"
+  description: "Install the Go Continuous Delivery tool. Based on Tim Brown's ancible-gocd."
   company: "ThoughtWorks, Inc."
   license: MIT
   min_ansible_version: 1.6
@@ -20,4 +20,5 @@ galaxy_info:
         - all
   categories:
     - development
-dependencies: []
+dependencies:
+  - { role: java }
