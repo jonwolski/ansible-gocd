@@ -17,3 +17,17 @@
 - name: restart firewalld
   sudo: yes
   service: name=firewalld state=restarted
+
+- name: iptables changed
+  command: echo updating iptables
+  notify:
+    - save iptables
+    - restart iptables
+
+- name: save iptables
+  command: service iptables save
+  sudo: yes
+
+- name: restart iptables
+  service: name=iptables state=restarted
+  sudo: yes
