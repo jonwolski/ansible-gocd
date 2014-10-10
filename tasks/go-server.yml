@@ -13,6 +13,9 @@
   notify:
   - restart go-server
 
+- name: configure go-server
+  lineinfile: dest=/etc/default/go-server  line="export JAVA_HOME={{ GOCD_JAVA_HOME}}"
+
 - name: start go-server
   sudo: yes
   service: name=go-server state=started

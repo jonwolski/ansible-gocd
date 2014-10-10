@@ -20,7 +20,7 @@
   when: ansible_pkg_mgr == 'apt'
 
 - name: determine JAVA_HOME
-  shell: readlink -f /usr/bin/java | sed "s:bin/java::"
+  shell: find /usr/java -type d -name *1.8* | tail -n1
   register: system_java_home
 
 - name: set GOCD_JAVA_HOME
