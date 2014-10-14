@@ -76,3 +76,10 @@
   when: iptablesrules.stdout.find("gocd") == -1
   notify:
     - iptables changed
+
+- name: add iptables rules for GoCD (https)
+  sudo: yes
+  command: /sbin/iptables -I INPUT -p tcp --dport {{GOCD_SERVER_TLS_PORT}} -j ACCEPT -m comment --comment "gocd (https)"
+  when: iptablesrules.stdout.find("gocd (https)") == -1
+  notify:
+    - iptables changed
