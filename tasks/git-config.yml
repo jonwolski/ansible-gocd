@@ -1,0 +1,5 @@
+---
+
+- name: Copy .gitconfig file
+  template: "src=gitconfig dest=/var/{{ GOCD_USER }}/.gitconfig mode=0600 owner={{ GOCD_USER }} group={{ GOCD_GROUP }}"
+

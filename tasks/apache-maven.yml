@@ -1,0 +1,10 @@
+---
+- name: install apache maven epel
+  sudo: yes
+  shell: wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+#   args:
+#     creates: /etc/yum.repos.d/epel-apache-maven.repo
+
+- name: install apache-maven
+  sudo: yes
+  yum: name=apache-maven state=present

@@ -1,0 +1,11 @@
+[user]
+        name = EveryDollar CI Server
+        email = {{ lookup('env', 'GITHUB_USER_EMAIL')}}
+[url "https://{{ lookup('env', 'GITHUB_USER')}}:{{ lookup('env', 'GITHUB_ACCESS_KEY')}}@github.com/"]
+        insteadOf = git://github.com/
+[url "https://{{ lookup('env', 'GITHUB_USER')}}:{{ lookup('env', 'GITHUB_ACCESS_KEY')}}@github.com/"]
+        insteadOf = git@github.com:
+[url "https://{{ lookup('env', 'GITHUB_USER')}}:{{ lookup('env', 'GITHUB_ACCESS_KEY')}}@github.com/"]
+        insteadOf = https://github.com/
+[url "https://{{ lookup('env', 'GITHUB_USER')}}:{{ lookup('env', 'GITHUB_ACCESS_KEY')}}@github.com/"]
+        insteadOf = ssh://github.com/

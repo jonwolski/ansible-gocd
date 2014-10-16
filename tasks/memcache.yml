@@ -1,0 +1,9 @@
+---
+
+- name: memcache | install memcached
+  sudo: yes
+  yum: name=memcached state=present
+
+- name: start memcached
+  sudo: yes
+  service: name=memcached state=started

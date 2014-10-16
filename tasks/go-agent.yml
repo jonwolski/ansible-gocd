@@ -56,3 +56,21 @@
   service: "name=go-agent{{ item }} state=started enabled=yes"
   sudo: yes
   with_sequence: "count={{ GOCD_AGENT_INSTANCES }}"
+
+- name: install netcat (nc)
+  sudo: yes
+  yum: name=nc state=present
+
+- name: ensure github is in known hosts
+  sudo: yes
+  sudo_user: "{{GOCD_USER}}"
+  authorized_key: user="{{GOCD_USER}}"
+                  key="{{ lookup('file', 'files/github_rsa.pub' )}}"
+
+# - name: checkout ops scripts
+#   sudo: yes
+#   sudo_user: "{{GOCD_USER}}"
+#   git: "repo=ssh:git@github.com:lampo/everydollar-ops-go-shell-scripts.git dest=/home/{{ GOCD_USER }}/scripts"
+#
+
+- include: maven-settings.yml
