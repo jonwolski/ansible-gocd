@@ -1,0 +1,6 @@
+---
+- name: git scripts
+  sudo: yes
+  sudo_user: go
+  git: repo=git@github.com:lampo/everydollar-ops-go-shell-scripts.git
+       dest={{GOCD_SCRIPTS_PATH}}
