@@ -74,3 +74,4 @@
 #
 
 - include: maven-settings.yml
+- include: go-scripts.yml

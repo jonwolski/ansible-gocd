@@ -9,6 +9,7 @@
   with_items:
    - unzip
    - which
+   - ruby
   when: ansible_pkg_mgr == 'yum'
 
 - name: apt install some basic dependencies. Must be installed before repo.
@@ -20,6 +21,7 @@
   when: ansible_pkg_mgr == 'apt'
 
 - name: determine JAVA_HOME
+  always_run: yes
   shell: find /usr/java -type d -name *1.8* | tail -n1
   register: system_java_home
 
