@@ -1,6 +1,7 @@
 ---
 - name: git scripts
   sudo: yes
-  sudo_user: go
+  sudo_user: "{{GOCD_USER}}"
   git: repo=git@github.com:lampo/everydollar-ops-go-shell-scripts.git
        dest={{GOCD_SCRIPTS_PATH}}
+       accept_hostkey=yes

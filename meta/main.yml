@@ -21,4 +21,6 @@ galaxy_info:
   categories:
     - development
 dependencies:
-  - { role: java }
+    - { role: ruby }
+    - { role: java }
+    - { role: maven }

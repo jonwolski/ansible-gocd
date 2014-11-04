@@ -61,11 +61,32 @@
   sudo: yes
   yum: name=nc state=present
 
-- name: ensure github is in known hosts
+- name: create .ssh dir
   sudo: yes
   sudo_user: "{{GOCD_USER}}"
-  authorized_key: user="{{GOCD_USER}}"
-                  key="{{ lookup('file', 'files/github_rsa.pub' )}}"
+  file: path="{{GOCD_USER_HOME}}/.ssh"
+        state=directory
+        mode=0700
+
+- name: create authorized_keys file
+  sudo: yes
+  sudo_user: "{{GOCD_USER}}"
+  file: path="{{GOCD_USER_HOME}}/.ssh/authorized_keys"
+        owner="{{GOCD_USER}}"
+        state=touch
+        mode=0600
+
+- name: ensure github is in known hosts
+  lineinfile: dest="{{GOCD_USER}}/.ssh/authorized_keys"
+              line="{{ lookup('file', 'files/github_rsa.pub' )}}"
+
+# - name: ensure github is in known hosts
+#   sudo: yes
+#   sudo_user: "{{GOCD_USER}}"
+#   authorized_key: user="{{GOCD_USER}}"
+#                   key="{{ lookup('file', 'files/github_rsa.pub' )}}"
+#                   path="{{GOCD_USER_HOME}}/.ssh/authorized_keys"
+#                   manage_dir=yes
 
 # - name: checkout ops scripts
 #   sudo: yes
@@ -75,3 +96,15 @@
 
 - include: maven-settings.yml
 - include: go-scripts.yml
+- include: aws-cli.yml
+
+- name: install bna gem
+  sudo: yes
+  gem: name=bna state=present repository={{ lookup('env','RUBYGEMS_SOURCE_URL') }} user_install=false
+
+- name: symlink bna gem in /usr/bin
+  sudo: yes
+  file: dest=/usr/bin/bna
+        src=/opt/rubies/ruby-2.1.3/bin/bna
+        state=link
+

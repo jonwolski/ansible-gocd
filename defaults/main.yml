@@ -8,4 +8,4 @@ GOCD_SERVER_TLS_PORT: 8154
 GOCD_USER: go
 GOCD_GROUP: go
 GOCD_USER_HOME: /var/go
-GOCD_SCRIPTS_PATH: "{{lookup('env', 'GOCD_USER_HOME')}}/scripts"
+GOCD_SCRIPTS_PATH: /var/go/scripts

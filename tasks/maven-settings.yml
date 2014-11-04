@@ -1,6 +1,6 @@
 ---
 - name: ensure there is an m2 directory
-  file: "state=directory path=/var/{{ GOCD_USER}}/.m2"
+  file: "state=directory path=/var/{{ GOCD_USER}}/.m2 owner={{ GOCD_USER }} group={{ GOCD_GROUP }}"
 
 - name: Copy Maven settings.xml file
   template: "src=maven-settings.xml dest=/var/{{ GOCD_USER }}/.m2/settings.xml mode=0600 owner={{ GOCD_USER }} group={{ GOCD_GROUP }}"

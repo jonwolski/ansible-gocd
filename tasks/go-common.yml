@@ -9,7 +9,6 @@
   with_items:
    - unzip
    - which
-   - ruby
   when: ansible_pkg_mgr == 'yum'
 
 - name: apt install some basic dependencies. Must be installed before repo.
