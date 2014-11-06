@@ -61,6 +61,7 @@
   sudo: yes
   yum: name=nc state=present
 
+# TODO: see if this can be deleted
 - name: create .ssh dir
   sudo: yes
   sudo_user: "{{GOCD_USER}}"
@@ -97,6 +98,7 @@
 - include: maven-settings.yml
 - include: go-scripts.yml
 - include: aws-cli.yml
+- include: tower-cli.yml
 
 - name: install bna gem
   sudo: yes

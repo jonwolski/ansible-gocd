@@ -1,4 +1,5 @@
 ---
+# TODO: clarify how I'm installing maven
 - name: install apache maven epel
   sudo: yes
   shell: wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo

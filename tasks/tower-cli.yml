@@ -1,0 +1,24 @@
+---
+- name: install pip
+  sudo: yes
+  yum: name=python-pip
+
+- name: install Ansible Tower client
+  sudo: yes
+  pip: name=ansible-tower-cli
+
+# - name: create awx directory
+#   sudo: yes
+#   file: dest=/etc/awx/
+#         state=directory
+#         owner=root
+#         group=root
+#         mode=0755
+
+- name: Copy tower-cli config file
+  sudo_user: "{{ GOCD_USER}}"
+  template: src=tower_cli.cfg
+            dest="{{ GOCD_USER_HOME}}/.tower_cli.cfg"
+            owner="{{ GOCD_USER }}"
+            group="{{ GOCD_GROUP }}"
+            mode=0400
