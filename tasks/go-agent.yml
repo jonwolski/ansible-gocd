@@ -77,24 +77,6 @@
         state=touch
         mode=0600
 
-- name: ensure github is in known hosts
-  lineinfile: dest="{{GOCD_USER}}/.ssh/authorized_keys"
-              line="{{ lookup('file', 'files/github_rsa.pub' )}}"
-
-# - name: ensure github is in known hosts
-#   sudo: yes
-#   sudo_user: "{{GOCD_USER}}"
-#   authorized_key: user="{{GOCD_USER}}"
-#                   key="{{ lookup('file', 'files/github_rsa.pub' )}}"
-#                   path="{{GOCD_USER_HOME}}/.ssh/authorized_keys"
-#                   manage_dir=yes
-
-# - name: checkout ops scripts
-#   sudo: yes
-#   sudo_user: "{{GOCD_USER}}"
-#   git: "repo=ssh:git@github.com:lampo/everydollar-ops-go-shell-scripts.git dest=/home/{{ GOCD_USER }}/scripts"
-#
-
 - include: maven-settings.yml
 - include: go-scripts.yml
 - include: aws-cli.yml
