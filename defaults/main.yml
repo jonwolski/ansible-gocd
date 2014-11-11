@@ -1,11 +1,11 @@
 #GOCD_GO_VERSION: 13.4.1-18342
 GOCD_GO_VERSION: 14.2.0-377
 GOCD_JAVA_HOME: /usr/java/jdk1.8.0_20
-GOCD_AGENT_INSTANCES: "{{ ansible_processor_count * ansible_processor_cores + 2}}"
+GOCD_AGENT_INSTANCES: "{{ ansible_processor_count * ansible_processor_cores + 4}}"
 GOCD_SERVER_HOST: localhost
 GOCD_SERVER_PORT: 8153
 GOCD_SERVER_TLS_PORT: 8154
 GOCD_USER: go
 GOCD_GROUP: go
-GOCD_USER_HOME: /var/go
-GOCD_SCRIPTS_PATH: /var/go/scripts
+GOCD_USER_HOME: /opt/go
+GOCD_SCRIPTS_PATH: /opt/go/scripts

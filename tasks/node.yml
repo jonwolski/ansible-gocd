@@ -1,0 +1,14 @@
+---
+- name: install node
+  yum: name={{ item }}
+  with_items:
+    - http-parser
+    - libuv
+    - nodejs
+#    - npm
+
+- name: install bower and grunt
+  npm: name={{ item }} global=yes
+  with_items:
+    - bower
+    - grunt-cli

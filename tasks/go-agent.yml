@@ -99,6 +99,7 @@
 - include: go-scripts.yml
 - include: aws-cli.yml
 - include: tower-cli.yml
+- include: node.yml
 
 - name: install bna gem
   sudo: yes

@@ -45,9 +45,9 @@
   sudo: yes
   group: name={{ GOCD_GROUP }} state=present
 
-- name: add go user with home at /var/go
+- name: add go user with home
   sudo: yes
-  user: name={{ GOCD_USER }} comment="Go CD User" group={{ GOCD_GROUP }} home=/var/go
+  user: name={{ GOCD_USER }} comment="Go CD User" group={{ GOCD_GROUP }} home={{ GOCD_USER_HOME }}
 
 - name: create log directory
   sudo: yes
