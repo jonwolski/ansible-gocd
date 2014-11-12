@@ -83,3 +83,13 @@
   when: iptablesrules.stdout.find("gocd (https)") == -1
   notify:
     - iptables changed
+
+- name: set up admin user
+  sudo: yes
+  template:
+    src=go.htpasswd
+    dest=/etc/go/htpasswd
+    mode=0400
+    owner="{{GOCD_USER}}"
+    group="{{GOCD_GROUP}}"
+
