@@ -5,7 +5,7 @@
     - http-parser
     - libuv
     - nodejs
-#    - npm
+    - npm
 
 - name: install bower and grunt
   npm: name={{ item }} global=yes
