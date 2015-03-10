@@ -77,6 +77,7 @@
         state=touch
         mode=0600
 
+- include: pg.yml
 - include: maven-settings.yml
 - include: go-scripts.yml
 - include: aws-cli.yml
@@ -87,9 +88,13 @@
   sudo: yes
   gem: name=bna state=present repository={{ lookup('env','RUBYGEMS_SOURCE_URL') }} user_install=false
 
-- name: install sass gem
+- name: install some gems
   sudo: yes
-  gem: name=sass state=present user_install=false
+  gem: name={{item}} state=present user_install=false
+  with_items:
+    - sass
+    - pg
+    - bundler
 
 - name: symlink gems in /usr/bin
   sudo: yes
@@ -99,3 +104,4 @@
   with_items:
     - bna
     - sass
+    - bundle
