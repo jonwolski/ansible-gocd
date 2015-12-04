@@ -1,0 +1,5 @@
+[fury]
+name=Gemfury Private Repo
+baseurl={{ lookup( 'env', 'FURY_YUM_REPOSITORY_URL' )}}
+enabled=1
+gpgcheck=0

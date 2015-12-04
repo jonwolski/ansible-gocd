@@ -1,11 +1,23 @@
 ---
+- name: add Ramsey Solutions fury.io repo
+  template: src=fury.repo dest=/etc/yum.repos.d/ owner=root group=root mode=0644
+
+- name: get current node version
+  shell: "which node && node --version"
+  register: nodejs_current_version
+  ignore_errors: yes
+
+- name: remove old node version
+  yum: name=nodejs state=absent
+  when: nodejs_current_version != "{{ NODEJS_TARGET_VERSION }}"
+
 - name: install node
   yum: name={{ item }}
   with_items:
     - http-parser
     - libuv
-    - nodejs
-    - npm
+    - nodejs-{{ NODEJS_TARGET_VERSION }}
+    - nodejs-npm-{{ NODEJS_TARGET_VERSION }}
 
 - name: install bower and grunt
   npm: name={{ item }} global=yes
